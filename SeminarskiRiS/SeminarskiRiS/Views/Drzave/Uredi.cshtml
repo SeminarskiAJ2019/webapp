@@ -1,0 +1,38 @@
+﻿@model SeminarskiRS1.ViewModels.DrzavaUrediVM
+@using SeminarskiRS1.Models
+@{
+    ViewData["Title"] = "Uredi";
+    Layout = "_Layout";
+}
+
+<form id="forma" action="/Drzave/Snimi" method="post" style="margin:50px; padding:50px;align-content:center;border:solid">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(s => s.DrzavaID)
+    <div class="form-group">
+        <label style="margin-left:200px;">Naziv drzave</label><br />
+        @Html.TextBoxFor(s => s.Naziv, new { @class="inp", style=" width:400px;height:30px;border-radius:10px;outline:none;margin-left:200px;"})
+    </div>
+
+
+
+
+    <input type="submit" value="Snimi" style=" width:400px;height:30px;border-radius:10px;outline:none;margin-left:200px;" />
+</form>
+<script>
+    $("form").validate({
+        rules: {
+            Naziv: {
+                required: true
+            }
+        },
+        messages: {
+            Naziv: {
+                required: "Morate unijeti naziv drzave"
+            }
+        }
+    });
+     $("form").submit(e => {
+            return $("form").valid();
+        })
+</script>
+

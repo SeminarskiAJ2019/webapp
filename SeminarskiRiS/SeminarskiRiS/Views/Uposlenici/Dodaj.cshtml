@@ -1,0 +1,26 @@
+﻿@model SeminarskiRS1.ViewModels.Uposlenici.UposleniciUrediVM
+@{
+    ViewData["Title"] = "Dodaj";
+}
+
+<h1>Dodaj</h1>
+
+<form action="/Uposlenici/Dodaj">
+    <label>Unesi ime uposlenika:</label>
+    @Html.TextBoxFor(s => s.Ime)
+    <label>Unesi prezime uposlenika:</label>
+    @Html.TextBoxFor(s => s.Prezime)
+    <label>Unesi broj telefona uposlenika:</label>
+    @Html.TextBoxFor(s => s.BrTelefona)
+    <label>Unesi email uposlenika:</label>
+    @Html.TextBoxFor(s => s.Email)
+    <label>Unesi spol uposlenika M/Ž:</label>
+    @Html.TextBoxFor(s => s.Spol)
+    <label>Odaberite tip uposlenika:</label>
+    @Html.DropDownListFor(s => s.UposlenikTipID, Model.tipovi);
+    <label>Odaberite grad:</label>
+    @Html.DropDownListFor(s => s.GradID, Model.gradovi);
+
+    <input type="submit" value="submit" />
+</form>
+

@@ -1,0 +1,60 @@
+﻿@using SeminarskiRS1.Models
+@{
+    ViewData["Title"] = "Prikazi";
+    List<Vozilo> podaci = (List<Vozilo>)ViewData["vozila-kljuc"];
+    string error_poruka = (string)ViewData["error-poruka"];
+}
+
+<h2>Prikaz Vozila</h2>
+
+<table class="table tab-pane" style="text-align:left">
+    <thead style="text-align:center">
+        <tr>
+            <th>Tip</th>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Potrosnja</th>
+            <th>Konjska snaga</th>
+            <th>Registracija</th>
+            <th>Vazenje registracije</th>
+            <th>Masa</th>
+            <th>Zapremina motora</th>
+            <th>Godina proizvodnje</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in podaci)
+        {
+            <tr>
+                <td hidden @x.VoziloID></td>
+                <td>@x.Tip</td>
+                <td>@x.Marka</td>
+                <td>@x.Model</td>
+                <td>@x.Potrosnja</td>
+                <td>@x.KS</td>
+                <td>@x.Registracija</td>
+                <td>@x.VazenjeRegistracije</td>
+                <td>@x.Masa</td>
+                <td>@x.ZapreminaMotora</td>
+                <td>@x.GodinaProizvodnje</td>
+                <td>
+                    <a href="/Vozila/Obrisi?VoziloID=@x.VoziloID" class="btn btn-danger">Obrisi</a>
+                    <a href="/Vozila/Uredi?VoziloID=@x.VoziloID" class="btn btn-info">Uredi</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (error_poruka != null)
+{
+    <br />
+
+    <div class="alert alert-danger">
+        @error_poruka
+
+    </div>
+}
+<a href="/Vozila/Dodaj"  class="btn btn-success">DODAJ VOZILO</a>
+<a href="/Home/Index" class="btn btn-info">Back</a>
+

@@ -1,0 +1,38 @@
+﻿@using SeminarskiRS1.ViewModels.Servisi
+@using SeminarskiRS1.Models
+@{
+    ViewData["Title"] = "Prikazi";
+    List<ServisPrikaziVM> servisi = (List<ServisPrikaziVM>)ViewData["servisi-kljuc"];
+}
+
+<h1>Prikaz servisa</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Lokacija Map</th>
+            <th>Opis</th>
+            <th>Radno Vrijeme</th>
+            <th>Usluge</th>
+            <th>Grad</th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var x in servisi)
+        {
+            <tr>
+                <td>@x.LokacijaMap</td>
+                <td>@x.Opis</td>
+                <td>@x.RadnoVrijeme</td>
+                <td>@x.Usluge</td>
+                <td>@x.Grad</td>
+                <td><a href="/Servis/Uredi?ServisID=@x.ServisID" class="btn btn-danger">Uredi</a>
+                <a href="/Servis/Obrisi?ServisID=@x.ServisID" class="btn btn-info">Obrisi</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Servis/Dodaj" class="btn btn-success">Dodaj novi servis</a>
+<a href="/Home/Index" class="btn btn-outline-info">Back</a>
+

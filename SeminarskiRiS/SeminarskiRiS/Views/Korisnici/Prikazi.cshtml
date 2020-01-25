@@ -1,0 +1,44 @@
+﻿@using SeminarskiRS1.Models
+@using SeminarskiRS1.ViewModels.Korisnici
+@{
+    ViewData["Title"] = "Prikazi";
+    List<KorisniciPrikaziVM> korisnici = (List<KorisniciPrikaziVM>)ViewData["korisnici-kljuc"];
+}
+
+<h1>Prikaz korisnika</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Broj Telefona</th>
+            <th>Email</th>
+            <th>Adresa</th>
+            <th>Spol</th>
+            <th>Grad</th>
+            <th>Vozilo</th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in korisnici)
+        {
+            <tr>
+                <td>@x.Ime</td>
+                <td>@x.Prezime</td>
+                <td>@x.BrTelefona</td>
+                <td>@x.Email</td>
+                <td>@x.Adresa</td>
+                <td>@x.Spol</td>
+                <td>@x.Grad</td>
+                <td>@x.Vozilo</td>
+                <td><a href="/Korisnici/Uredi?KorisnikID=@x.KorisnikID" class="btn btn-info">Uredi</a>
+                <a href="/Korisnici/Obrisi?KorisnikID=@x.KorisnikID" class="btn btn-danger">Obrisi</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Korisnici/Dodaj" class="btn btn-success">Dodaj novog korisnika</a>
+<a href="/Home/Index"class="btn btn-outline-info">Back</a>
+

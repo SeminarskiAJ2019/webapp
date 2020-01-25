@@ -1,0 +1,77 @@
+﻿@using SeminarskiRS1.Models
+@model SeminarskiRS1.ViewModels.VoziloUrediVM
+@{
+    ViewData["Title"] = "Uredi";
+    Layout = "_Layout";
+}
+
+    <form id="forma" action="/Vozila/Snimi" method="post" style="margin:50px; padding:50px; align-content:center; border:solid">
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(s => s.VoziloID)
+        <label>Unesite tip vozila:</label>
+        @Html.TextBoxFor(s => s.Tip)
+        <br />
+        <label>Unesite marku vozila:</label>
+        @Html.TextBoxFor(s => s.Marka)
+        <br />
+        <label>Unesite model vozila:</label>
+        @Html.TextBoxFor(s => s.Model)
+        <br />
+        <label>Unesite KS vozila:</label>
+        @Html.TextBoxFor(s => s.KS)
+        <br />
+        <label>Unesite potrosnju vozila:</label>
+        @Html.TextBoxFor(s => s.Potrosnja)
+        <br />
+        <label>Unesite registraciju vozila:</label>
+        @Html.TextBoxFor(s => s.Registracija)
+        <br />
+        <label>Unesite datum vazenja registracije vozila:</label>
+        @Html.TextBoxFor(s => s.VazenjeRegistracije)
+        <br />
+        <label>Unesite masu vozila:</label>
+        @Html.TextBoxFor(s => s.Masa)
+        <br />
+        <label>Unesite zapreminu motora vozila:</label>
+        @Html.TextBoxFor(s => s.ZapreminaMotora)
+        <br />
+        <label>Unesite godinu proizvodnje vozila:</label>
+        @Html.TextBoxFor(s => s.GodinaProizvodnje)
+        <br />
+
+        <input type="submit" value="Snimi" />
+    </form>
+
+<script>
+    $("form").validate({
+            rules: {
+                Tip: {
+                    required: true
+            },
+                Marka: {
+                required:true
+            },
+                Model: {
+                required:true
+            }
+
+            },
+            messages: {
+                Tip: {
+                    required: "Morate unijeti tip vozila!"
+                },
+                Marka: {
+                    required:"Morate unijeti marku vozila!"
+                },
+                Model: {
+                    required:"Morate unijeti model vozila!"
+                }
+            }
+        });
+
+        $("form").submit(e => {
+            return $("form").valid();
+        })
+</script>
+
+

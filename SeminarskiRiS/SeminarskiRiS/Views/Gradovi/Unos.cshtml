@@ -1,0 +1,16 @@
+﻿@model SeminarskiRS1.ViewModels.GradUrediVM
+@{
+    ViewData["Title"] = "Unos";
+    var kantoni = (List<Kanton>)ViewData["kantoni-kljuc"];
+}
+
+<h1>Dodaj</h1>
+<form action="/Gradovi/Dodaj">
+    <label>Unesite ime grada:</label>
+    @Html.TextBoxFor(s => s.Naziv)
+    <label>Odaberite kanton</label>
+    @Html.DropDownListFor(s => s.KantonID, Model.kantoni);
+    <input type="submit" value="Submit" />
+</form>
+
+

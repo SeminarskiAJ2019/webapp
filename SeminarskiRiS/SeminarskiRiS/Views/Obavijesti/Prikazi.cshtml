@@ -1,0 +1,31 @@
+﻿@using SeminarskiRS1.ViewModels.Obavijesti
+@{
+    ViewData["Title"] = "Prikazi";
+    List<ObavijestiPrikaziVM> obavijesti = (List<ObavijestiPrikaziVM>)ViewData["obavijesti-kljuc"];
+}
+
+<h1>Prikaz obavijesti</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Datum</th>
+            <th>Sadrzaj</th>
+            <th>Autor</th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in obavijesti) {
+        <tr>
+            <td>@x.Datum</td>
+            <td>@x.Sadrzaj</td>
+            <td>@x.Uposlenik</td>
+            <td><a href="/Obavijesti/Uredi?ObavijestID=@x.ObavijestID" class="btn btn-danger">Uredi</a>
+            <a href="/Obavijesti/Obrisi?ObavijestID=@x.ObavijestID" class="btn btn-info">Obriši</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+<a href="/Obavijesti/Dodaj" class="btn btn-success">Dodaj novu obavijest</a>
+<a href="/Home/Index" class="btn btn-outline-info">Back</a>

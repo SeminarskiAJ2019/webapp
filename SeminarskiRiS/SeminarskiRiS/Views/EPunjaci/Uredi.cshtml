@@ -1,0 +1,26 @@
+﻿@using SeminarskiRS1.Models
+@model SeminarskiRS1.ViewModels.EPunjaci.EPunjacUrediVM
+@{
+    ViewData["Title"] = "Uredi";
+}
+
+<h1>Uredi</h1>
+
+<form action="/EPunjaci/Snimi" method="post">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(e => e.EPunjacID)
+    <label>Lokacija Map</label>
+    @Html.TextBoxFor(e => e.LokacijaMap)
+    <br />
+    <label>Lokacija Naziv</label>
+    @Html.TextBoxFor(e => e.LokacijaNaziv)
+    <br />
+    <label>Opis</label>
+    @Html.TextBoxFor(e => e.Opis)
+    <br />
+    <label>Grad</label>
+    @Html.DropDownListFor(e => e.GradID,Model.gradovi)
+
+    <input type="submit" value="Snimi" />
+</form>
+

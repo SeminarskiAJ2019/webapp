@@ -1,0 +1,20 @@
+﻿@model SeminarskiRS1.ViewModels.Kantoni.KantonUrediVM
+@{
+
+    ViewData["Title"] = "Dodaj";
+    var kantoni = (List<Kanton>)ViewData["kantoni-kljuc"];
+}
+
+<h2>Dodaj</h2>
+<form action="/Kantoni/Dodaj">
+    <label>Unesite ime kantona:</label>
+    @Html.TextBoxFor(s => s.NazivKantonta, new { autocomplete = "off" });
+    <label>Unesite skracenicu za kanton</label>
+    @Html.TextBoxFor(s => s.Skracenica, new { autocomplete = "off" });
+
+    <label>Odaberite drzavu</label>
+    @Html.DropDownListFor(s => s.DrzavaID, Model.drzave);
+    
+    <input type="submit" value="Submit" />
+</form>
+

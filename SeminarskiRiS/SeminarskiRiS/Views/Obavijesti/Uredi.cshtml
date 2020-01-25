@@ -1,0 +1,23 @@
+﻿@using SeminarskiRS1.Models
+@model SeminarskiRS1.ViewModels.Obavijesti.ObavijestiUrediVM
+@{
+    ViewData["Title"] = "Uredi";
+}
+
+<h1>Uredi</h1>
+
+<form action="/Obavijesti/Snimi" method="post">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(s => s.ObavijestID)
+    <label>Datum</label>
+    @Html.TextBoxFor(s => s.Datum)
+    <br />
+    <label>Sadrzaj</label>
+    @Html.TextBoxFor(s => s.Sadrzaj)
+    <br />
+    <label>Autor: </label>
+    @Html.DropDownListFor(s => s.UposlenikID, Model.uposlenici);
+
+    <input type="submit" value="Snimi" />
+</form>
+

@@ -1,0 +1,37 @@
+﻿@using SeminarskiRS1.Models
+@using SeminarskiRS1.ViewModels.ENP
+@{
+    ViewData["Title"] = "Prikazi";
+    List<ENPPrikaziVM> enpovi= (List<ENPPrikaziVM>)ViewData["enp-kljuc"];
+}
+
+<h1>Prikaz ENP-ova</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Naziv</th>
+            <th>BrTelefona</th>
+            <th>Email</th>
+            <th>Radno Vrijeme</th>
+            <th>Grad</th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in enpovi)
+        {
+            <tr>
+                <td>@x.Naziv</td>
+                <td>@x.BrTelefona</td>
+                <td>@x.Email</td>
+                <td>@x.RadnoVrijeme</td>
+                <td>@x.Grad</td>
+                <td><a href="/ENP/Uredi?ENPID=@x.ENPID" class="btn btn-info">Uredi</a>
+                <a href="/ENP/Obrisi?ENPID=@x.ENPID" class="btn btn-danger">Obrisi</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/ENP/Dodaj" class="btn btn-success">Dodaj ENP</a>
+<a href="/Home/Index" class="btn btn-outline-info">Back</a>

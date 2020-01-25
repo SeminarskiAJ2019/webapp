@@ -1,0 +1,40 @@
+﻿@using SeminarskiRS1.Models
+@using SeminarskiRS1.ViewModels.Rute
+@{
+    ViewData["Title"] = "Prikazi";
+    List<RutePrikaziVM> rute = (List<RutePrikaziVM>)ViewData["rute-kljuc"];
+}
+
+<h1>Prikaz ruta</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Naziv</th>
+            <th>Početna</th>
+            <th>Završna</th>
+            <th>Daljina</th>
+            <th>Cijena putarine</th>
+            <th>Korisnik</th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in rute)
+        {
+            <tr>
+                <td>@x.Naziv</td>
+                <td>@x.Pocetna</td>
+                <td>@x.Zavrsna</td>
+                <td>@x.Daljina</td>
+                <td>@x.CijenaPutarine</td>
+                <td>@x.Korisnik</td>
+                <td><a href="/Rute/Uredi?RutaID=@x.RutaID"class="btn btn-info">Uredi</a>
+                <a href="/Rute/Obrisi?RutaID=@x.RutaID"class="btn btn-danger">Obriši</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Rute/Dodaj" class="btn btn-success">Dodaj novu rutu</a>
+<a href="/Home/Index"class="btn btn-outline-info">Back</a>
+

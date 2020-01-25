@@ -1,0 +1,35 @@
+﻿@using SeminarskiRS1.Models
+@using SeminarskiRS1.ViewModels.EPunjaci
+@{
+    ViewData["Title"] = "Prikazi";
+    List<EPunjacPrikaziVM> punjaci = (List<EPunjacPrikaziVM>)ViewData["punjaci-kljuc"];
+}
+
+<h1>Prikaz EPunjača</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Lokacija Map</th>
+            <th>Lokacija Naziv</th>
+            <th>Opis</th>
+            <th>Grad</th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in punjaci)
+        {
+            <tr>
+                <td>@x.LokacijaMap</td>
+                <td>@x.LokacijaNaziv</td>
+                <td>@x.Opis</td>
+                <td>@x.Grad</td>
+                <td><a href="/EPunjaci/Uredi?EPunjacID=@x.EPunjacID" class="btn btn-info">Uredi</a>
+                <a href="/EPunjaci/Obrisi?EPunjacID=@x.EPunjacID" class="btn btn-danger">Obrisi</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/EPunjaci/Dodaj" class="btn btn-success">Dodaj novi punjac</a>
+<a href="/Home/Index" class="btn btn-outline-info">Back</a>

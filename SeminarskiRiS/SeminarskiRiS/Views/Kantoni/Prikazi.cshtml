@@ -1,0 +1,38 @@
+﻿@using SeminarskiRS1.Models
+@using SeminarskiRS1.ViewModels
+@{
+    ViewData["Title"] = "Prikazi";
+    List<KantonPrikaziVM> kantoni = (List<KantonPrikaziVM>)ViewData["kantoni-kljuc"];
+}
+
+<h2>Prikaz kantona</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Naziv kantona</th>
+            <th>Skracenica</th>
+            <th>Drzava</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var x in kantoni)
+        {
+            <tr>
+                <td>
+                    @x.NazivKantonta
+                </td>
+                <td>@x.Skracenica</td>
+                <td>@x.Drzava</td>
+
+                <td><a href="/Kantoni/Obrisi?KantonID=@x.KantonID"class=" btn btn-danger">Obrisi</a>
+                <a href="/Kantoni/Uredi?KantonID=@x.KantonID" class=" btn btn-info">Uredi</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Kantoni/Dodaj"class=" btn btn-success">Dodaj novi kanton</a>
+<a href="/Home/Index" class="btn btn-outline-info">Back</a>
+

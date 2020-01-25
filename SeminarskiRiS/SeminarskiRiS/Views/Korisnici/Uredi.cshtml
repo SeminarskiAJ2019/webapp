@@ -1,0 +1,37 @@
+﻿@using SeminarskiRS1.Models
+@model SeminarskiRS1.ViewModels.Korisnici.KorisniciUrediVM
+@{
+    ViewData["Title"] = "Uredi";
+}
+
+<h1>Uredi</h1>
+
+<form action="/Korisnici/Snimi" method="post">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(k => k.KorisnikID)
+    <label>Ime</label>
+    @Html.TextBoxFor(k => k.Ime)
+    <br />
+    <label>Prezime</label>
+    @Html.TextBoxFor(k => k.Prezime)
+    <br />
+    <label>Broj Telefona</label>
+    @Html.TextBoxFor(k => k.BrTelefona)
+    <br />
+    <label>Email</label>
+    @Html.TextBoxFor(k => k.Email)
+    <br />
+    <label>Adresa</label>
+    @Html.TextBoxFor(k => k.Adresa)
+    <br />
+    <label>Spol M/Ž</label>
+    @Html.TextBoxFor(k => k.Spol)
+    <br />
+    <label>Grad</label>
+    @Html.DropDownListFor(k => k.GradID, Model.gradovi)
+    <br />
+    <label>Vozilo</label>
+    @Html.DropDownListFor(k => k.VoziloID, Model.vozila)
+
+    <input type="submit" value="Snimi" />
+</form>
